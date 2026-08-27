@@ -3,191 +3,286 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Vishnu Kanth · AI Engineer</title>
+<title>Vishnu Kanth :: AI Engineer</title>
 <meta name="description" content="AI Engineer specialising in LLM systems, RAG pipelines, and agentic AI. MSc AI & Robotics, University of Hertfordshire. Ex-Deloitte. Open to roles from Oct 2026."/>
-<meta property="og:title" content="Vishnu Kanth · AI Engineer"/>
+<meta property="og:title" content="Vishnu Kanth :: AI Engineer"/>
 <meta property="og:description" content="Building production-grade LLM systems, RAG pipelines, and agentic AI. 4 live projects. Ex-Deloitte."/>
 <meta property="og:url" content="https://vishnu0529.github.io"/>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🟠</text></svg>"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
 :root {
---bg: #F6F1E7;
---paper: #FFFFFF;
---paper2: #EFE7D8;
---border: rgba(31,27,22,0.14);
---ink: #201B14;
---muted: #706A5D;
---rust: #BD4B25;
---teal: #2C5F55;
---gold: #A9791F;
---rust-soft: rgba(189,75,37,0.09);
---teal-soft: rgba(44,95,85,0.09);
+--void: #050507;
+--panel: #0a0e14;
+--panel2: #0f151f;
+--border: rgba(0,240,255,0.16);
+--border-hot: rgba(255,46,154,0.25);
+--cyan: #00f0ff;
+--magenta: #ff2e9a;
+--purple: #a855f7;
+--green: #39ff88;
+--amber: #ffb02e;
+--text: #e6f6ff;
+--muted: #6e7f96;
+--cyan-soft: rgba(0,240,255,0.08);
+--magenta-soft: rgba(255,46,154,0.08);
+--purple-soft: rgba(168,85,247,0.08);
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;font-size:16px;line-height:1.7}
+body{
+background:var(--void);color:var(--text);font-family:'Inter',sans-serif;font-size:16px;line-height:1.7;
+position:relative;overflow-x:hidden;
+}
 
-::selection{background:var(--rust);color:#fff}
+::selection{background:var(--cyan);color:#000}
+
+/* ── AMBIENT BACKGROUND ── */
+.bg-fx{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg-grid{
+position:absolute;inset:-2px;
+background-image:
+linear-gradient(rgba(0,240,255,0.055) 1px,transparent 1px),
+linear-gradient(90deg,rgba(0,240,255,0.055) 1px,transparent 1px);
+background-size:44px 44px;
+mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 40%,transparent 100%);
+}
+.bg-glow{position:absolute;border-radius:50%;filter:blur(120px);opacity:.35}
+.bg-glow.c1{width:520px;height:520px;background:var(--cyan);top:-180px;left:-120px}
+.bg-glow.c2{width:560px;height:560px;background:var(--magenta);top:20%;right:-200px}
+.bg-glow.c3{width:480px;height:480px;background:var(--purple);bottom:-160px;left:30%}
+.scanlines{
+position:absolute;inset:0;
+background:repeating-linear-gradient(0deg,rgba(255,255,255,0.018) 0px,rgba(255,255,255,0.018) 1px,transparent 1px,transparent 3px);
+mix-blend-mode:overlay;
+}
+.noise{position:absolute;inset:0;opacity:.35;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+body > *:not(.bg-fx){position:relative;z-index:1}
 
 /* ── NAV ── */
 nav{
 position:sticky;top:0;z-index:100;
-padding:22px 56px;
+padding:18px 56px;
 display:flex;align-items:center;justify-content:space-between;
-background:rgba(246,241,231,.92);backdrop-filter:blur(10px);
+background:rgba(5,5,7,.78);backdrop-filter:blur(14px);
 border-bottom:1px solid var(--border);
 }
-.nav-logo{font-family:'Fraunces',serif;font-weight:700;font-style:italic;font-size:22px;color:var(--ink);text-decoration:none}
-.nav-links{display:flex;gap:36px;list-style:none}
-.nav-links a{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:.04em;transition:color .2s;position:relative}
-.nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--rust);transform:scaleX(0);transition:transform .25s}
-.nav-links a:hover{color:var(--ink)}
-.nav-links a:hover::after{transform:scaleX(1)}
+.nav-logo{font-family:'Orbitron',sans-serif;font-weight:800;font-size:20px;color:var(--text);text-decoration:none;letter-spacing:.04em}
+.nav-logo span{color:var(--cyan);text-shadow:0 0 12px rgba(0,240,255,.7)}
+.nav-links{display:flex;gap:34px;list-style:none}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s,text-shadow .2s;position:relative}
+.nav-links a::before{content:'>';margin-right:5px;color:var(--cyan);opacity:0;transition:opacity .2s}
+.nav-links a:hover{color:var(--cyan);text-shadow:0 0 10px rgba(0,240,255,.6)}
+.nav-links a:hover::before{opacity:1}
 .nav-right{display:flex;gap:14px;align-items:center}
-.nav-cv{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:.04em;border-bottom:1px solid var(--border);padding-bottom:2px;transition:color .2s,border-color .2s}
-.nav-cv:hover{color:var(--rust);border-color:var(--rust)}
-.nav-cta{background:var(--rust);border:1px solid var(--rust);color:#fff;padding:9px 22px;border-radius:2px;font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.04em;cursor:pointer;transition:background .2s,transform .2s;text-decoration:none}
-.nav-cta:hover{background:#a13f1e;transform:translateY(-1px)}
+.nav-cv{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:.05em;transition:color .2s}
+.nav-cv:hover{color:var(--magenta)}
+.nav-cta{
+background:transparent;border:1px solid var(--cyan);color:var(--cyan);padding:9px 22px;
+font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.06em;cursor:pointer;
+transition:all .25s;text-decoration:none;position:relative;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);
+}
+.nav-cta:hover{background:var(--cyan);color:#000;box-shadow:0 0 24px rgba(0,240,255,.5)}
 
 .nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.4rem}
-.nav-hamburger span{display:block;width:20px;height:1.5px;background:var(--ink);border-radius:1px;transition:all .3s}
+.nav-hamburger span{display:block;width:20px;height:1.5px;background:var(--cyan);border-radius:1px;transition:all .3s}
 .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .nav-hamburger.open span:nth-child(2){opacity:0}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mobile-nav{display:none;position:fixed;inset:0;background:rgba(246,241,231,.98);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mobile-nav{display:none;position:fixed;inset:0;background:rgba(5,5,7,.98);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2.4rem}
 .mobile-nav.open{display:flex}
-.mobile-nav a{font-family:'Fraunces',serif;font-size:2rem;font-weight:600;color:var(--ink);text-decoration:none}
-.mobile-nav a:hover{color:var(--rust)}
+.mobile-nav a{font-family:'Orbitron',sans-serif;font-size:1.7rem;font-weight:700;color:var(--text);text-decoration:none}
+.mobile-nav a:hover{color:var(--cyan)}
 
 /* ── HERO ── */
 .hero{min-height:92vh;display:flex;align-items:center;padding:80px 56px}
-.hero-inner{max-width:1080px;margin:0 auto;width:100%}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%}
 
-.status-dot{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--teal);margin-bottom:20px}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--teal)}
+.status-dot{display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);margin-bottom:22px;padding:6px 14px;border:1px solid rgba(57,255,136,.3);background:rgba(57,255,136,.06);letter-spacing:.05em}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
-.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--rust);letter-spacing:.1em;text-transform:uppercase;margin-bottom:26px;display:flex;align-items:center;gap:12px}
-.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--rust)}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--cyan);box-shadow:0 0 6px var(--cyan)}
 
-.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(46px,7vw,88px);line-height:1.04;letter-spacing:-.01em;margin-bottom:30px}
-.hero h1 .line2{color:var(--rust);font-style:italic;font-weight:500;display:block}
+.hero h1{
+font-family:'Orbitron',sans-serif;font-weight:800;font-size:clamp(38px,6.2vw,74px);line-height:1.08;letter-spacing:-.01em;margin-bottom:28px;
+color:var(--text);
+}
+.hero h1 .line2{
+display:block;
+background:linear-gradient(90deg,var(--cyan),var(--magenta) 60%,var(--purple));
+-webkit-background-clip:text;background-clip:text;color:transparent;
+filter:drop-shadow(0 0 18px rgba(0,240,255,.25));
+position:relative;
+}
+.hero h1 .line2::after{
+content:attr(data-text);position:absolute;left:0;top:0;
+color:var(--magenta);opacity:0;mix-blend-mode:screen;
+animation:glitch 5s infinite;
+}
+@keyframes glitch{
+0%,92%,100%{opacity:0;transform:translate(0,0)}
+93%{opacity:.7;transform:translate(-3px,1px)}
+94%{opacity:.5;transform:translate(3px,-1px)}
+95%{opacity:.7;transform:translate(-2px,0)}
+96%{opacity:0}
+}
 
-.hero-desc{font-size:18px;color:var(--muted);max-width:560px;line-height:1.85;margin-bottom:44px}
-.hero-desc strong{color:var(--ink);font-weight:600}
+.hero-desc{font-size:17px;color:var(--muted);max-width:560px;line-height:1.85;margin-bottom:40px}
+.hero-desc strong{color:var(--text);font-weight:600}
+.hero-desc .hl{color:var(--cyan)}
 
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.btn-primary{background:var(--ink);color:var(--bg);padding:15px 30px;border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.04em;text-decoration:none;transition:background .2s,transform .2s;display:inline-flex;align-items:center;gap:8px}
-.btn-primary:hover{background:var(--rust);transform:translateY(-1px)}
-.btn-secondary{background:transparent;color:var(--ink);padding:14px 28px;border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.04em;text-decoration:none;border:1px solid var(--ink);transition:border-color .2s,color .2s}
-.btn-secondary:hover{border-color:var(--teal);color:var(--teal)}
-.btn-cv-dl{color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.04em;text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:3px}
-.btn-cv-dl:hover{color:var(--rust);border-color:var(--rust)}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:44px}
+.btn-primary{
+background:var(--cyan);color:#000;padding:14px 30px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.05em;text-decoration:none;
+transition:all .25s;display:inline-flex;align-items:center;gap:8px;
+clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+}
+.btn-primary:hover{box-shadow:0 0 30px rgba(0,240,255,.55);transform:translateY(-1px)}
+.btn-secondary{
+background:transparent;color:var(--text);padding:13px 28px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.05em;text-decoration:none;
+border:1px solid var(--border-hot);transition:all .25s;
+}
+.btn-secondary:hover{border-color:var(--magenta);color:var(--magenta);box-shadow:0 0 20px rgba(255,46,154,.25)}
+.btn-cv-dl{color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.05em;text-decoration:none;border-bottom:1px dashed var(--border)}
+.btn-cv-dl:hover{color:var(--cyan);border-color:var(--cyan)}
 
-.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:44px}
-.htag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.04em;padding:6px 13px;border:1px solid var(--border);border-radius:20px;background:var(--paper)}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px}
+.htag{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--cyan);letter-spacing:.05em;padding:6px 12px;border:1px solid var(--border);background:rgba(0,240,255,.04)}
 
 /* ── SECTIONS ── */
 section{padding:110px 56px}
-.section-inner{max-width:1080px;margin:0 auto}
-.section-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--rust);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
-.section-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(30px,3.6vw,46px);letter-spacing:-.01em;margin-bottom:56px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--magenta);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.section-label::before{content:'//'}
+.section-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.section-title{font-family:'Orbitron',sans-serif;font-weight:700;font-size:clamp(26px,3.4vw,42px);letter-spacing:.01em;margin-bottom:56px;color:var(--text)}
+
+/* ── TERMINAL PANEL (shared) ── */
+.term{background:var(--panel);border:1px solid var(--border);position:relative}
+.term::before{
+content:'';position:absolute;top:0;left:0;right:0;height:34px;
+background:var(--panel2);border-bottom:1px solid var(--border);
+}
+.term-dots{position:absolute;top:12px;left:16px;display:flex;gap:7px;z-index:2}
+.term-dots span{width:9px;height:9px;border-radius:50%;display:block}
+.term-dots span:nth-child(1){background:#ff5f56}
+.term-dots span:nth-child(2){background:#ffbd2e}
+.term-dots span:nth-child(3){background:#27c93f}
+.term-body{padding:50px 40px 34px}
 
 /* ── ABOUT ── */
-.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center}
-.about-text p{color:var(--muted);margin-bottom:20px;font-size:16px;line-height:1.9}
-.about-text p strong{color:var(--rust);font-weight:600}
-.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden}
-.stat-box{background:var(--paper);padding:30px 26px}
-.stat-num{font-family:'Fraunces',serif;font-size:38px;font-weight:600;color:var(--rust);line-height:1;margin-bottom:8px}
-.stat-label{font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.03em;line-height:1.5}
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:stretch}
+.about-text .term-body p{color:var(--muted);margin-bottom:18px;font-size:15px;line-height:1.85}
+.about-text .term-body p strong{color:var(--cyan);font-weight:600}
+.about-text .term-body p:last-child{margin-bottom:0}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.stat-box{background:var(--panel);padding:28px 24px}
+.stat-num{font-family:'Orbitron',sans-serif;font-size:34px;font-weight:800;color:var(--cyan);line-height:1;margin-bottom:8px;text-shadow:0 0 14px rgba(0,240,255,.35)}
+.stat-label{font-size:11.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.03em;line-height:1.5;text-transform:uppercase}
 
 /* ── EXPERIENCE ── */
-.exp-item{display:grid;grid-template-columns:190px 1fr;gap:40px;padding:42px 0;border-bottom:1px solid var(--border)}
+.exp-item{display:grid;grid-template-columns:180px 1fr;gap:40px;padding:38px 0;border-bottom:1px solid var(--border)}
 .exp-item:first-child{border-top:1px solid var(--border)}
 .exp-date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);padding-top:4px;line-height:1.7}
-.exp-role{font-family:'Fraunces',serif;font-size:22px;font-weight:600;margin-bottom:6px}
-.exp-co{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--rust);letter-spacing:.03em;margin-bottom:18px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.exp-date::before{content:'[ ';color:var(--cyan)}
+.exp-date::after{content:' ]';color:var(--cyan)}
+.exp-role{font-family:'Orbitron',sans-serif;font-size:19px;font-weight:700;margin-bottom:6px;color:var(--text)}
+.exp-co{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--magenta);letter-spacing:.03em;margin-bottom:18px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .exp-co .loc{color:var(--muted)}
 .exp-desc{color:var(--muted);font-size:14px;line-height:1.8;margin-bottom:20px}
 .exp-bullets{list-style:none;display:flex;flex-direction:column;gap:9px}
-.exp-bullets li{font-size:13.5px;color:var(--muted);padding-left:20px;position:relative;line-height:1.7}
-.exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--rust);font-size:12px;top:2px}
+.exp-bullets li{font-size:13.5px;color:var(--muted);padding-left:22px;position:relative;line-height:1.7;font-family:'JetBrains Mono',monospace}
+.exp-bullets li::before{content:'::';position:absolute;left:0;color:var(--cyan);font-size:12px;top:1px}
 .exp-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
-.tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:5px 11px;border-radius:20px;border:1px solid var(--border);color:var(--muted);letter-spacing:.03em;background:var(--paper)}
+.tag{font-family:'JetBrains Mono',monospace;font-size:10px;padding:5px 11px;border:1px solid var(--border);color:var(--muted);letter-spacing:.03em}
 
 /* ── PROJECTS ── */
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden}
-.proj-card{background:var(--paper);padding:38px 34px}
-.proj-card.featured{grid-column:1 / -1;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:start;background:var(--paper2)}
-.proj-num{font-family:'Fraunces',serif;font-size:44px;font-weight:600;color:var(--border);margin-bottom:16px;line-height:1}
-.proj-card.featured .proj-num{font-size:60px;color:rgba(189,75,37,.18)}
-.proj-name{font-family:'Fraunces',serif;font-size:21px;font-weight:600;margin-bottom:8px}
-.proj-org{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--rust);letter-spacing:.04em;margin-bottom:16px}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+.proj-card{background:var(--panel);border:1px solid var(--border);padding:32px 30px;position:relative;transition:border-color .25s,box-shadow .25s}
+.proj-card:hover{border-color:var(--cyan);box-shadow:0 0 30px rgba(0,240,255,.12)}
+.proj-card::before,.proj-card::after{content:'';position:absolute;width:14px;height:14px;border-color:var(--cyan);opacity:.7}
+.proj-card::before{top:-1px;left:-1px;border-top:2px solid var(--cyan);border-left:2px solid var(--cyan)}
+.proj-card::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--magenta);border-right:2px solid var(--magenta)}
+.proj-card.featured{grid-column:1 / -1;display:grid;grid-template-columns:1fr auto;gap:44px;align-items:start;background:var(--panel2)}
+.proj-num{font-family:'Orbitron',sans-serif;font-size:38px;font-weight:800;color:rgba(255,255,255,.07);margin-bottom:14px;line-height:1}
+.proj-card.featured .proj-num{font-size:52px}
+.proj-name{font-family:'Orbitron',sans-serif;font-size:19px;font-weight:700;margin-bottom:8px;color:var(--text)}
+.proj-org{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);letter-spacing:.04em;margin-bottom:16px}
 .proj-desc{font-size:13.5px;color:var(--muted);line-height:1.8;margin-bottom:20px}
 .proj-metrics{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-.metric{font-family:'JetBrains Mono',monospace;font-size:11px;padding:5px 11px;background:var(--rust-soft);color:var(--rust);border-radius:20px}
-.metric.blue{background:var(--teal-soft);color:var(--teal)}
-.metric.red{background:rgba(169,121,31,.12);color:var(--gold)}
+.metric{font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:5px 11px;background:var(--cyan-soft);color:var(--cyan);border:1px solid rgba(0,240,255,.2)}
+.metric.blue{background:var(--purple-soft);color:var(--purple);border-color:rgba(168,85,247,.25)}
+.metric.red{background:rgba(255,176,46,.08);color:var(--amber);border-color:rgba(255,176,46,.25)}
 .proj-stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
 .proj-links{display:flex;gap:10px;flex-wrap:wrap}
-.proj-link{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:.03em;padding:6px 13px;border:1px solid var(--border);border-radius:20px;transition:color .2s,border-color .2s;display:inline-flex;align-items:center;gap:6px}
-.proj-link:hover{color:var(--rust);border-color:var(--rust)}
-.proj-link.live{border-color:rgba(44,95,85,.3);color:var(--teal)}
-.proj-link.live:hover{background:var(--teal-soft)}
-.proj-link.blue{border-color:rgba(189,75,37,.3);color:var(--rust)}
-.proj-link.blue:hover{background:var(--rust-soft)}
-.proj-status{font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 10px;border-radius:20px;margin-bottom:14px;display:inline-block;letter-spacing:.04em}
-.s-live{background:var(--teal-soft);color:var(--teal);border:1px solid rgba(44,95,85,.25)}
-.s-wip{background:rgba(169,121,31,.12);color:var(--gold);border:1px solid rgba(169,121,31,.3)}
-.featured-badge{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--rust);letter-spacing:.06em;padding:7px 14px;border:1px solid rgba(189,75,37,.35);border-radius:20px;background:var(--rust-soft);align-self:flex-start;white-space:nowrap;margin-top:8px}
+.proj-link{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:.03em;padding:6px 13px;border:1px solid var(--border);transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.proj-link:hover{color:var(--cyan);border-color:var(--cyan);box-shadow:0 0 14px rgba(0,240,255,.2)}
+.proj-link.live{border-color:rgba(57,255,136,.3);color:var(--green)}
+.proj-link.live:hover{background:rgba(57,255,136,.06);box-shadow:0 0 14px rgba(57,255,136,.2)}
+.proj-link.blue{border-color:rgba(255,46,154,.3);color:var(--magenta)}
+.proj-link.blue:hover{background:rgba(255,46,154,.06);box-shadow:0 0 14px rgba(255,46,154,.2)}
+.proj-status{font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 10px;margin-bottom:14px;display:inline-flex;align-items:center;gap:6px;letter-spacing:.05em;border:1px solid}
+.proj-status .pdot{width:5px;height:5px;border-radius:50%}
+.s-live{color:var(--green);border-color:rgba(57,255,136,.3);background:rgba(57,255,136,.05)}
+.s-live .pdot{background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 1.8s infinite}
+.s-wip{color:var(--amber);border-color:rgba(255,176,46,.3);background:rgba(255,176,46,.05)}
+.s-wip .pdot{background:var(--amber)}
+.featured-badge{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--void);letter-spacing:.08em;padding:7px 14px;background:linear-gradient(90deg,var(--cyan),var(--magenta));align-self:flex-start;white-space:nowrap;margin-top:8px;font-weight:700}
 
 /* ── SKILLS ── */
-.skills-layout{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.skill-group{background:var(--paper);border:1px solid var(--border);border-radius:6px;padding:30px}
-.skill-group-title{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--rust);letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px}
+.skills-layout{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.skill-group{background:var(--panel);padding:30px}
+.skill-group-title{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--magenta);letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px}
 .skill-list{display:flex;flex-direction:column;gap:16px}
 .skill-item{display:flex;flex-direction:column;gap:7px}
 .skill-top{display:flex;align-items:center;justify-content:space-between}
-.skill-name{font-size:13px;color:var(--ink)}
+.skill-name{font-size:13px;color:var(--text)}
 .skill-pct{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted)}
-.skill-bar{width:100%;height:3px;background:var(--paper2);border-radius:2px;overflow:hidden}
-.skill-fill{height:100%;background:var(--rust);border-radius:2px}
-.skill-fill.blue{background:var(--teal)}
-.skill-fill.red{background:var(--gold)}
+.skill-bar{width:100%;height:3px;background:rgba(255,255,255,.06);overflow:hidden}
+.skill-fill{height:100%;background:linear-gradient(90deg,var(--cyan),var(--magenta));box-shadow:0 0 8px rgba(0,240,255,.5)}
+.skill-fill.blue{background:linear-gradient(90deg,var(--purple),var(--magenta));box-shadow:0 0 8px rgba(168,85,247,.5)}
+.skill-fill.red{background:linear-gradient(90deg,var(--amber),var(--magenta));box-shadow:0 0 8px rgba(255,176,46,.4)}
 
 /* ── EDUCATION ── */
-.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.edu-card{background:var(--paper);border:1px solid var(--border);border-radius:6px;padding:34px}
-.edu-deg{font-family:'Fraunces',serif;font-size:19px;font-weight:600;margin-bottom:8px;line-height:1.3}
-.edu-school{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--rust);letter-spacing:.03em;margin-bottom:4px}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.edu-card{background:var(--panel);border:1px solid var(--border);padding:32px;position:relative}
+.edu-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--cyan),var(--magenta))}
+.edu-deg{font-family:'Orbitron',sans-serif;font-size:17px;font-weight:700;margin-bottom:8px;line-height:1.35;color:var(--text)}
+.edu-school{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cyan);letter-spacing:.03em;margin-bottom:4px}
 .edu-meta{font-size:12px;color:var(--muted);margin-bottom:16px;font-family:'JetBrains Mono',monospace}
 .edu-mods{font-size:13.5px;color:var(--muted);line-height:1.75}
 
 /* ── CONTACT ── */
-.contact-wrap{background:var(--paper2);border:1px solid var(--border);border-radius:10px;padding:64px;display:grid;grid-template-columns:1fr 1fr;gap:80px}
-.contact-left h2{font-family:'Fraunces',serif;font-size:clamp(28px,3.4vw,42px);font-weight:600;line-height:1.15;margin-bottom:22px}
-.contact-left h2 span{color:var(--rust);font-style:italic}
-.contact-left p{color:var(--muted);font-size:15px;line-height:1.85;margin-bottom:28px}
-.avail-box{padding:16px 20px;border:1px solid rgba(44,95,85,.25);border-radius:6px;background:var(--teal-soft);margin-bottom:12px}
-.avail-box p{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--teal);letter-spacing:.03em;line-height:1.7}
-.cv-box{padding:14px 20px;border:1px solid var(--border);border-radius:6px;background:var(--paper)}
+.contact-wrap{background:var(--panel);border:1px solid var(--border);padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0;position:relative;overflow:hidden}
+.contact-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--magenta))}
+.contact-left{padding:60px}
+.contact-left h2{font-family:'Orbitron',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:800;line-height:1.2;margin-bottom:20px;color:var(--text)}
+.contact-left h2 span{background:linear-gradient(90deg,var(--cyan),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent}
+.contact-left p{color:var(--muted);font-size:15px;line-height:1.85;margin-bottom:26px}
+.avail-box{padding:16px 20px;border:1px solid rgba(57,255,136,.25);background:rgba(57,255,136,.05);margin-bottom:12px}
+.avail-box p{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);letter-spacing:.03em;line-height:1.7}
+.cv-box{padding:14px 20px;border:1px dashed var(--border);background:var(--panel2)}
 .cv-box a{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:.03em;display:flex;align-items:center;gap:8px;transition:color .2s}
-.cv-box a:hover{color:var(--rust)}
-.contact-links{display:flex;flex-direction:column;gap:12px}
-.contact-link{display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--paper);border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--ink);font-size:13px;transition:border-color .2s;font-family:'JetBrains Mono',monospace}
-.contact-link:hover{border-color:var(--rust);color:var(--rust)}
-.contact-icon{font-size:15px;width:20px;text-align:center}
+.cv-box a:hover{color:var(--cyan)}
+.contact-links{display:flex;flex-direction:column;background:var(--panel2)}
+.contact-link{display:flex;align-items:center;gap:14px;padding:20px 32px;text-decoration:none;color:var(--text);font-size:13px;border-bottom:1px solid var(--border);transition:all .2s;font-family:'JetBrains Mono',monospace}
+.contact-link:last-child{border-bottom:none}
+.contact-link:hover{color:var(--cyan);background:rgba(0,240,255,.04);padding-left:38px}
+.contact-icon{font-size:15px;width:20px;text-align:center;color:var(--magenta)}
 
 /* ── FOOTER ── */
-footer{padding:34px 56px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+footer{padding:32px 56px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 footer p{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
 footer a{color:var(--muted);text-decoration:none;transition:color .2s}
-footer a:hover{color:var(--rust)}
+footer a:hover{color:var(--cyan)}
 
 /* ── ANIMATIONS ── */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
@@ -202,25 +297,34 @@ nav{padding:16px 24px}
 .nav-links{display:none}
 section{padding:70px 24px}
 .hero{padding:100px 24px 60px}
-.about-grid,.edu-grid{grid-template-columns:1fr;gap:40px}
+.about-grid,.edu-grid{grid-template-columns:1fr;gap:24px}
 .exp-item{grid-template-columns:1fr;gap:8px}
-.skills-layout{grid-template-columns:1fr 1fr}
-.contact-wrap{grid-template-columns:1fr;gap:40px;padding:36px 24px}
+.skills-layout{grid-template-columns:1fr}
+.contact-wrap{grid-template-columns:1fr}
+.contact-left{padding:36px 24px}
 .proj-card.featured{grid-template-columns:1fr}
 .featured-badge{display:none}
 }
 @media(max-width:640px){
 .nav-hamburger{display:flex}
 .nav-right .nav-cv{display:none}
-.skills-layout{grid-template-columns:1fr}
 footer{flex-direction:column;gap:8px;text-align:center}
 }
 </style>
 </head>
 <body>
 
+<div class="bg-fx">
+<div class="bg-glow c1"></div>
+<div class="bg-glow c2"></div>
+<div class="bg-glow c3"></div>
+<div class="bg-grid"></div>
+<div class="noise"></div>
+<div class="scanlines"></div>
+</div>
+
 <nav>
-<a href="#" class="nav-logo">VK.</a>
+<a href="#" class="nav-logo">VK<span>_</span>AI</a>
 <ul class="nav-links">
 <li><a href="#about">About</a></li>
 <li><a href="#experience">Experience</a></li>
@@ -243,65 +347,68 @@ footer{flex-direction:column;gap:8px;text-align:center}
 <a href="#projects" onclick="closeMobileNav()">Projects</a>
 <a href="#skills" onclick="closeMobileNav()">Skills</a>
 <a href="#contact" onclick="closeMobileNav()">Contact</a>
-<a href="Vishnu_Kanth_AI_Engineer_CV.docx" download style="color:var(--rust);font-size:1.2rem">↓ Download CV</a>
+<a href="Vishnu_Kanth_AI_Engineer_CV.docx" download style="color:var(--cyan);font-size:1.2rem">↓ Download CV</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
 <div class="hero-inner">
-<div class="status-dot"><span class="dot"></span> Open to AI Engineer roles · London & Remote</div>
-<div class="hero-eyebrow">MSc AI &amp; Robotics · University of Hertfordshire · Ex-Deloitte</div>
+<div class="status-dot"><span class="dot"></span> SYSTEM STATUS: OPEN TO AI ENGINEER ROLES // LONDON &amp; REMOTE</div>
+<div class="hero-eyebrow">MSc AI &amp; Robotics :: University of Hertfordshire :: Ex-Deloitte</div>
 <h1>
 Vishnu Kanth
-<span class="line2">Suryanarayan.</span>
+<span class="line2" data-text="SURYANARAYAN.exe">SURYANARAYAN.exe</span>
 </h1>
 <p class="hero-desc">
 Building <strong>production-grade LLM systems</strong>, RAG pipelines, and agentic AI.
-4 live projects deployed on Railway and Render right now.
+<span class="hl">4 live projects</span> deployed on Railway and Render right now.
 Available <strong>full-time from October 2026</strong> on a UK Graduate Visa.
 </p>
 <div class="hero-actions">
-<a href="#projects" class="btn-primary">View Projects ↓</a>
-<a href="mailto:vishnuks0529@gmail.com" class="btn-secondary">Get in Touch</a>
+<a href="#projects" class="btn-primary">&gt; VIEW_PROJECTS</a>
+<a href="mailto:vishnuks0529@gmail.com" class="btn-secondary">INITIATE_CONTACT</a>
 <a href="Vishnu_Kanth_AI_Engineer_CV.docx" download class="btn-cv-dl">↓ Download CV</a>
 </div>
 <div class="hero-tags">
-<span class="htag">LLM SYSTEMS</span>
-<span class="htag">RAG PIPELINES</span>
-<span class="htag">AGENTIC AI</span>
-<span class="htag">FASTAPI</span>
-<span class="htag">GEMINI 2.5 FLASH</span>
-<span class="htag">EX-DELOITTE</span>
+<span class="htag">#LLM_SYSTEMS</span>
+<span class="htag">#RAG_PIPELINES</span>
+<span class="htag">#AGENTIC_AI</span>
+<span class="htag">#FASTAPI</span>
+<span class="htag">#GEMINI_2.5</span>
+<span class="htag">#EX_DELOITTE</span>
 </div>
 </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" style="background:var(--paper);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+<section id="about">
 <div class="section-inner">
+<p class="section-label reveal">whoami</p>
+<h2 class="section-title reveal">Building AI that ships to production.</h2>
 <div class="about-grid reveal">
-<div class="about-text">
-<p class="section-label">About</p>
-<h2 class="section-title" style="margin-bottom:28px">Building AI that<br>ships to production.</h2>
+<div class="about-text term">
+<div class="term-dots"><span></span><span></span><span></span></div>
+<div class="term-body">
 <p>I'm completing an <strong>MSc in Artificial Intelligence &amp; Robotics</strong> at the University of Hertfordshire (graduating September 2026). Before that, I spent 7 years in engineering, most recently as a <strong>Senior Consultant at Deloitte Digital</strong> in Bangalore, delivering enterprise platforms for global clients.</p>
 <p>My focus is taking LLM research out of notebooks and into <strong>working production systems</strong>. Every project I build gets deployed with CI/CD, a real API, and a live URL you can hit right now.</p>
 <p>Available <strong>part-time (20 hrs/week)</strong> until September 2026, then <strong>full-time from October 2026</strong> on a UK Graduate Visa. Based in London. Open to hybrid and remote.</p>
 </div>
+</div>
 <div class="about-stats">
 <div class="stat-box">
-<div class="stat-num">4</div>
+<div class="stat-num">04</div>
 <div class="stat-label">Live AI projects<br>deployed right now</div>
 </div>
 <div class="stat-box">
-<div class="stat-num">2</div>
+<div class="stat-num">02</div>
 <div class="stat-label">Production APIs<br>Railway &amp; Render</div>
 </div>
 <div class="stat-box">
-<div class="stat-num">2,200+</div>
+<div class="stat-num">2.2K+</div>
 <div class="stat-label">Emails analysed<br>by NLP pipeline</div>
 </div>
 <div class="stat-box">
-<div class="stat-num">7yr</div>
+<div class="stat-num">07yr</div>
 <div class="stat-label">Professional<br>engineering experience</div>
 </div>
 </div>
@@ -312,14 +419,14 @@ Available <strong>full-time from October 2026</strong> on a UK Graduate Visa.
 <!-- EXPERIENCE -->
 <section id="experience">
 <div class="section-inner">
-<p class="section-label reveal">Experience</p>
+<p class="section-label reveal">system.log</p>
 <h2 class="section-title reveal">Where I've worked.</h2>
 
 <div class="exp-item reveal">
 <div class="exp-date">Jun 2024<br>Sep 2025</div>
 <div class="exp-content">
 <div class="exp-role">Senior Consultant</div>
-<div class="exp-co">Deloitte Digital <span class="loc">· Bangalore, India</span></div>
+<div class="exp-co">Deloitte Digital <span class="loc">:: Bangalore, India</span></div>
 <p class="exp-desc">Enterprise-scale digital platform delivery for global clients. Python workflow automation, cross-functional team leadership, and AI-assisted development using LLM tooling in compliance-driven environments.</p>
 <ul class="exp-bullets">
 <li>Delivered enterprise web platforms for global clients across multiple industry verticals</li>
@@ -339,7 +446,7 @@ Available <strong>full-time from October 2026</strong> on a UK Graduate Visa.
 <div class="exp-date">Nov 2021<br>Jul 2023</div>
 <div class="exp-content">
 <div class="exp-role">Front-End Engineer &amp; UI/UX Designer</div>
-<div class="exp-co">PinkLemonade Communications <span class="loc">· Bangalore, India</span></div>
+<div class="exp-co">PinkLemonade Communications <span class="loc">:: Bangalore, India</span></div>
 <p class="exp-desc">End-to-end interface delivery across 6+ SaaS and e-commerce client projects in agile sprint cycles.</p>
 <ul class="exp-bullets">
 <li>Built responsive interfaces and component libraries for SaaS and e-commerce clients</li>
@@ -356,7 +463,7 @@ Available <strong>full-time from October 2026</strong> on a UK Graduate Visa.
 <div class="exp-date">Dec 2018<br>Nov 2021</div>
 <div class="exp-content">
 <div class="exp-role">UI/UX Engineer</div>
-<div class="exp-co">Self-Employed <span class="loc">· Greater Bengaluru, India</span></div>
+<div class="exp-co">Self-Employed <span class="loc">:: Greater Bengaluru, India</span></div>
 <p class="exp-desc">Freelance interface engineering: responsive sites, dashboards, landing pages, and CMS builds for multiple clients.</p>
 <ul class="exp-bullets">
 <li>Delivered responsive interfaces and CMS builds for multiple clients</li>
@@ -371,18 +478,18 @@ Available <strong>full-time from October 2026</strong> on a UK Graduate Visa.
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" style="background:var(--paper);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+<section id="projects">
 <div class="section-inner">
-<p class="section-label reveal">Projects</p>
+<p class="section-label reveal">deployed_builds</p>
 <h2 class="section-title reveal">Things I've built.</h2>
 <div class="projects-grid reveal">
 
 <div class="proj-card featured">
 <div>
 <div class="proj-num">01</div>
-<span class="proj-status s-live">● LIVE · RAILWAY</span>
+<span class="proj-status s-live"><span class="pdot"></span>LIVE :: RAILWAY</span>
 <div class="proj-name">AI Resume Matcher</div>
-<div class="proj-org">Personal Project · 2026</div>
+<div class="proj-org">Personal Project :: 2026</div>
 <p class="proj-desc">Production-grade 4-step agentic LLM pipeline that analyses a CV against any job description. Steps: skill extraction → gap analysis → tailored content generation → application strategy synthesis. Dual-provider LLM abstraction (Gemini 2.5 Flash + Anthropic Claude), fully automated CI/CD via GitHub Actions. Outputs ATS match scores, personalised summaries, and cover letters.</p>
 <div class="proj-metrics">
 <span class="metric">4-step agentic pipeline</span>
@@ -401,14 +508,14 @@ Available <strong>full-time from October 2026</strong> on a UK Graduate Visa.
 <a href="https://github.com/vishnu0529/ai-resume-matcher" target="_blank" class="proj-link">⌥ GitHub</a>
 </div>
 </div>
-<div class="featured-badge">FEATURED PROJECT</div>
+<div class="featured-badge">FEATURED_BUILD</div>
 </div>
 
 <div class="proj-card">
 <div class="proj-num">02</div>
-<span class="proj-status s-live">● COMPLETE · JUN 2026</span>
+<span class="proj-status s-live"><span class="pdot"></span>COMPLETE :: JUN 2026</span>
 <div class="proj-name">AI Job Finder Bot</div>
-<div class="proj-org">Personal Project · 2026</div>
+<div class="proj-org">Personal Project :: 2026</div>
 <p class="proj-desc">Searches LinkedIn, Reed.co.uk, Remotive, and Arbeitnow simultaneously. Gemini 2.5 Flash scores each result 1–10 against a personal skill profile, generates a tailored cover letter in under 10 seconds, runs ATS gap analysis, and produces 6 interview questions. SQLite application tracker.</p>
 <div class="proj-metrics">
 <span class="metric">4 job boards</span>
@@ -426,14 +533,14 @@ Available <strong>full-time from October 2026</strong> on a UK Graduate Visa.
 
 <div class="proj-card">
 <div class="proj-num">03</div>
-<span class="proj-status s-live">● LIVE · RAILWAY</span>
+<span class="proj-status s-live"><span class="pdot"></span>LIVE :: RAILWAY</span>
 <div class="proj-name">Sports AI Prediction API</div>
-<div class="proj-org">Personal Project · 2025–2026</div>
+<div class="proj-org">Personal Project :: 2025-2026</div>
 <p class="proj-desc">Built twice: Python/FastAPI first, then fully rebuilt in C#/ASP.NET Core 10. Both versions live. C# version: clean architecture, JWT auth, Entity Framework Core (Azure-ready), OpenAI integration, 7 passing xUnit tests, GitHub Actions CI/CD.</p>
 <div class="proj-metrics">
 <span class="metric">2 live deployments</span>
 <span class="metric">7 xUnit tests</span>
-<span class="metric blue">JWT · EF Core</span>
+<span class="metric blue">JWT :: EF Core</span>
 </div>
 <div class="proj-stack">
 <span class="tag">ASP.NET Core 10</span><span class="tag">C#</span>
@@ -449,9 +556,9 @@ Available <strong>full-time from October 2026</strong> on a UK Graduate Visa.
 
 <div class="proj-card">
 <div class="proj-num">04</div>
-<span class="proj-status s-live">● COMPLETE</span>
+<span class="proj-status s-live"><span class="pdot"></span>COMPLETE</span>
 <div class="proj-name">Employee Sentiment Analysis</div>
-<div class="proj-org">Personal Project · 2025</div>
+<div class="proj-org">Personal Project :: 2025</div>
 <p class="proj-desc">End-to-end NLP pipeline processing 2,200+ employee emails for sentiment classification and flight-risk detection. BERT + VADER ensemble for domain-adapted inference, scikit-learn feature engineering, executive dashboards with ROC curves and confusion matrices.</p>
 <div class="proj-metrics">
 <span class="metric">2,200+ emails</span>
@@ -469,9 +576,9 @@ Available <strong>full-time from October 2026</strong> on a UK Graduate Visa.
 
 <div class="proj-card">
 <div class="proj-num">05</div>
-<span class="proj-status s-wip">● IN PROGRESS · SEP 2026</span>
+<span class="proj-status s-wip"><span class="pdot"></span>IN PROGRESS :: SEP 2026</span>
 <div class="proj-name">Phishing Email Detection</div>
-<div class="proj-org">MSc Final Project · University of Hertfordshire · 2026</div>
+<div class="proj-org">MSc Final Project :: University of Hertfordshire :: 2026</div>
 <p class="proj-desc">Head-to-head comparison: Random Forest (TF-IDF, scikit-learn) vs fine-tuned DistilBERT (HuggingFace, PyTorch) on the same dataset (SpamAssassin + Enron corpus). Benchmarked against published state-of-the-art. Advanced deliverable: FastAPI inference endpoint wrapping the best-performing model.</p>
 <div class="proj-metrics">
 <span class="metric">RF vs DistilBERT</span>
@@ -483,7 +590,7 @@ Available <strong>full-time from October 2026</strong> on a UK Graduate Visa.
 <span class="tag">PyTorch</span><span class="tag">scikit-learn</span><span class="tag">FastAPI</span>
 </div>
 <div class="proj-links">
-<a href="https://github.com/vishnu0529" target="_blank" class="proj-link">⌥ GitHub · Sep 2026</a>
+<a href="https://github.com/vishnu0529" target="_blank" class="proj-link">⌥ GitHub :: Sep 2026</a>
 </div>
 </div>
 
@@ -494,7 +601,7 @@ Available <strong>full-time from October 2026</strong> on a UK Graduate Visa.
 <!-- SKILLS -->
 <section id="skills">
 <div class="section-inner">
-<p class="section-label reveal">Tech Stack</p>
+<p class="section-label reveal">loaded_modules</p>
 <h2 class="section-title reveal">Tools I work with.</h2>
 <div class="skills-layout">
 
@@ -581,22 +688,22 @@ Available <strong>full-time from October 2026</strong> on a UK Graduate Visa.
 </section>
 
 <!-- EDUCATION -->
-<section id="education" style="background:var(--paper);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+<section id="education">
 <div class="section-inner">
-<p class="section-label reveal">Education</p>
+<p class="section-label reveal">training_data</p>
 <h2 class="section-title reveal">Academic background.</h2>
 <div class="edu-grid reveal">
 <div class="edu-card">
 <div class="edu-deg">MSc Artificial Intelligence &amp; Robotics</div>
 <div class="edu-school">University of Hertfordshire</div>
-<div class="edu-meta">Sep 2025 – Sep 2026 · Hatfield, UK</div>
-<div class="edu-mods">Machine Learning · Neural Networks · AI Systems Design · Robotic Control · Probabilistic AI · NLP · 3D Modelling<br><br>Final project: Random Forest vs DistilBERT for phishing email detection, benchmarked against published state-of-the-art results.</div>
+<div class="edu-meta">Sep 2025 - Sep 2026 :: Hatfield, UK</div>
+<div class="edu-mods">Machine Learning :: Neural Networks :: AI Systems Design :: Robotic Control :: Probabilistic AI :: NLP :: 3D Modelling<br><br>Final project: Random Forest vs DistilBERT for phishing email detection, benchmarked against published state-of-the-art results.</div>
 </div>
 <div class="edu-card">
 <div class="edu-deg">BEng Electronics &amp; Communication Engineering</div>
 <div class="edu-school">East West Institute of Technology</div>
-<div class="edu-meta">2014 – 2018 · Bengaluru, India</div>
-<div class="edu-mods">Signal Processing · Embedded Systems · Digital Electronics · Communication Systems · VLSI Design</div>
+<div class="edu-meta">2014 - 2018 :: Bengaluru, India</div>
+<div class="edu-mods">Signal Processing :: Embedded Systems :: Digital Electronics :: Communication Systems :: VLSI Design</div>
 </div>
 </div>
 </div>
@@ -605,16 +712,16 @@ Available <strong>full-time from October 2026</strong> on a UK Graduate Visa.
 <!-- CONTACT -->
 <section id="contact">
 <div class="section-inner">
-<p class="section-label reveal">Contact</p>
+<p class="section-label reveal">connect()</p>
 <div class="contact-wrap reveal">
 <div class="contact-left">
 <h2>Let's build<br>something <span>great.</span></h2>
 <p>Open to AI Engineer, ML Engineer, NLP Engineer, and Applied AI roles. London, remote, or hybrid. Part-time available now, full-time from October 2026.</p>
 <div class="avail-box">
-<p>● &nbsp;AVAILABLE NOW (PART-TIME 20 HRS/WK)<br>FULL-TIME FROM OCT 2026 · UK GRADUATE VISA</p>
+<p>● AVAILABLE NOW (PART-TIME 20 HRS/WK)<br>FULL-TIME FROM OCT 2026 :: UK GRADUATE VISA</p>
 </div>
 <div class="cv-box">
-<a href="Vishnu_Kanth_AI_Engineer_CV.docx" download>↓ &nbsp;Download CV</a>
+<a href="Vishnu_Kanth_AI_Engineer_CV.docx" download>↓ Download CV</a>
 </div>
 </div>
 <div class="contact-links">
@@ -639,7 +746,7 @@ Available <strong>full-time from October 2026</strong> on a UK Graduate Visa.
 </section>
 
 <footer>
-<p>© 2026 <a href="https://github.com/vishnu0529">Vishnu Kanth Suryanarayan</a> · London</p>
+<p>© 2026 <a href="https://github.com/vishnu0529">Vishnu Kanth Suryanarayan</a> :: London</p>
 <p><a href="https://github.com/vishnu0529/vishnu0529.github.io">Source on GitHub</a></p>
 </footer>
 
